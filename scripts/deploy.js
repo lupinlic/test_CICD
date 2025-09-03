@@ -1,16 +1,15 @@
 const hre = require("hardhat");
 
 async function main() {
-    const MyERC1155 = await hre.ethers.getContractFactory("MyToken");
-    const myERC1155 = await MyERC1155.deploy();
+    const MyToken = await ethers.getContractFactory("MyToken");
+    const initialSupply = ethers.parseUnits("1000", 18); // ethers v6
+    const myToken = await MyToken.deploy(initialSupply);
 
-    // ethers v6: chờ contract deploy xong
-    await myERC1155.waitForDeployment();
-
-    console.log("MyERC1155 deployed to:", await myERC1155.getAddress());
+    console.log("MyToken deployed to:", myToken.target); // ethers v6 dùng .target thay cho .address
 }
 
 main().catch((error) => {
     console.error(error);
     process.exitCode = 1;
 });
+
