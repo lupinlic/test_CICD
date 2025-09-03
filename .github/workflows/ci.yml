@@ -1,4 +1,4 @@
-name: Smart Contract CI/CD
+name: Smart Contract CI/CD test
 
 on:
   push:
